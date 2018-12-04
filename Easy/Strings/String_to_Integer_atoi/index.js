@@ -1,5 +1,5 @@
 /**
- * Time Complexity: O(n)
+ * Time Complexity: O(1)
  * @param {string} str
  * @return {number}
  */
