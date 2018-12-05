@@ -15,7 +15,7 @@ export default function maxProfit(prices){
 			j++;
 			continue;
 		}
-        //2
+		//2
 		if(prices[j] < prices[j+1]) {
 			j++;
 			continue;
