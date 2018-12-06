@@ -6,37 +6,26 @@
 export default function maxProfit(prices){
 	if(!prices || !prices.length) return 0;
 
-	let len = prices.length, i = 0, j = i+1, profit = [];
-
-	while(j < len){
+	let total = 0, i = 1, len = prices.length;
+	while(i < len) {
 		//1
-		if(prices[i] > prices[j]){
-			i++;
-			j++;
-			continue;
+		if(prices[i] - prices[i - 1] > 0){
+			//2
+			total += prices[i] - prices[i - 1];
 		}
-		//2
-		if(prices[j] < prices[j+1]) {
-			j++;
-			continue;
-		}
-		//3
-		profit.push(prices[j] - prices[i]);
-		i = j+1;
-		j = i+1;
+		i++;
 	}
-
-	return profit.reduce((acc, val) => acc + val, 0);
+	return total;
 }
 
 /**
  * Explanation:
- * 1. Use the "Multiple pointer" technique and compare a price with its next price i.e: 7 & 1.
- *    When 'i' is greater than 'j', just increment both pointers and skip the rest of the code.
+ * 1. Get the difference between the current price and its next price. If the sum is negative, that means
+ *    there's no profit to be made, so we move on.
+ *    i.e [7,1] -> 1-7 === -6 so no profit
+ *    i.e [1,5] -> 5-1 === 4 so profit
+ *    i.e [5,3] -> 3-5 === -2 so no profit
  * 
- * 2. At this point 'i' is less than 'j', so now you want to compare 'j' with its next price i.e: 5 & 3.
- *    If 'j' is less than 'j+1', then only increment j and skip the rest of the code.
+ * 2. When there are profits, we simply add the diffence to the total.
  * 
- * 3. Calculate and keep track of all profits made by storing them in an array. Then update 'i' to be 
- *    the next element of the current 'j' pointer and 'j' to be the next element of the new 'i' pointer.
  */
