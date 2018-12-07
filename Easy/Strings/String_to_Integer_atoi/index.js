@@ -6,13 +6,37 @@
 export default function atoi(str){
     if(!str || !str.length) return 0;
     //1
-    const PARSED = parseInt(str, 10);
+    const PARSED = _parseInt(str, 10);
     //2
     if(isNaN(PARSED)) return 0;
     //3
     const MAX_INT = Math.pow(2,31)-1, MIN_INT = -Math.pow(2,31);
     //4
     return PARSED > MAX_INT ? MAX_INT : PARSED < MIN_INT ? MIN_INT : PARSED;
+}
+
+function _parseInt(str) {
+    const zeroCode = '0'.charCodeAt(0);
+    const nineCode = '9'.charCodeAt(0);
+    const isDigit = char => char.charCodeAt(0) >= zeroCode && char.charCodeAt(0) <= nineCode;
+
+    let trimmed = str.trim();
+        
+    if(trimmed[0] !== '-' && !isDigit(trimmed[0])) return NaN;
+
+    let sign = 1;
+    if(trimmed[0] === '-'){ 
+        trimmed = trimmed.substr(1);
+        sign = -1;
+    }
+
+    let parsed = 0;
+        for(let char of trimmed){
+            if(!isDigit(char)) break;
+            parsed = parsed * 10 + (char.charCodeAt(0) - zeroCode);
+        }
+
+    return sign * parsed;
 }
 
 /**
