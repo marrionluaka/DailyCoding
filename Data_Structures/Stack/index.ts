@@ -58,18 +58,18 @@ export default class Stack<T> {
 }
 
 export function decimalToBinary(decimalNumber: number, base: number): string{
-	let stack = new Stack<number>(), 
-  		result = '',
+    let stack = new Stack<number>(), 
+        result = '',
         digits = '0123456789ABCDEF';
-   
-  while(decimalNumber > 0){
-    stack.Push(Math.floor(decimalNumber % base));
-    decimalNumber = Math.floor(decimalNumber / base);
-  }
-  
-  while(!stack.IsEmpty){
-  	result += digits[stack.Pop()];
-  }
-  
-  return result;
+
+    while(decimalNumber > 0){
+        stack.Push(Math.floor(decimalNumber % base));
+        decimalNumber = Math.floor(decimalNumber / base);
+    }
+
+    while(!stack.IsEmpty){
+        result += digits[stack.Pop()];
+    }
+
+    return result;
 }
