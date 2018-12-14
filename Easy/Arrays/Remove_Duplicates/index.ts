@@ -1,10 +1,8 @@
 /**
  * Time Complexity: O(n)
- * @param {number[]} nums
- * @return {number}
  */
-export default function removeDuplicates(nums) {
-    const set = new Set();
+export default function removeDuplicates(nums: number[]): number {
+    const set = new Set<number>();
     let i = 0;
 
     while(i < nums.length){

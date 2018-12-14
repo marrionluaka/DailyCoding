@@ -1,9 +1,7 @@
 /**
  * Time Complexity: O(n)
- * @param {number[]} prices
- * @return {number}
  */
-export default function maxProfit(prices){
+export default function maxProfit(prices: number[]): number{
 	if(!prices || !prices.length) return 0;
 
 	let total = 0, i = 1, len = prices.length;

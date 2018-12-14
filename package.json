@@ -1,18 +1,26 @@
 {
   "name": "LeetCode_Challenges",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "description": "Data Structure & Algorithms training with LeetCode.",
-  "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --watch ./**/*.spec.js"
+    "test": "mocha --reporter progress --compilers ts:ts-node/register --watch ./**/**/**/*.spec.ts ./**/**/*.spec.ts"
   },
-  "keywords": ["leetcode", "LeetCode", "LeetCode Challenges"],
+  "keywords": [
+    "leetcode",
+    "LeetCode",
+    "LeetCode Challenges"
+  ],
   "author": "Marrion Luaka",
   "license": "ISC",
   "dependencies": {
-    "babel-core": "6.26.3",
-    "babel-preset-es2015": "6.24.1",
     "chai": "4.2.0",
     "mocha": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/chai": "4.1.7",
+    "@types/mocha": "5.2.5",
+    "@types/node": "10.12.15",
+    "ts-node": "7.0.1",
+    "typescript": "3.2.2"
   }
 }

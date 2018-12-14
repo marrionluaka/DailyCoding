@@ -1,12 +1,10 @@
 /**
  * Time Complexity: O(1)
- * @param {string} str
- * @return {number}
  */
-export default function atoi(str){
+export default function atoi(str: string): number{
     if(!str || !str.length) return 0;
     //1
-    const PARSED = _parseInt(str, 10);
+    const PARSED = _parseInt(str);
     //2
     if(isNaN(PARSED)) return 0;
     //3
@@ -15,7 +13,7 @@ export default function atoi(str){
     return PARSED > MAX_INT ? MAX_INT : PARSED < MIN_INT ? MIN_INT : PARSED;
 }
 
-function _parseInt(str) {
+function _parseInt(str: string): number {
     const zeroCode = '0'.charCodeAt(0);
     const nineCode = '9'.charCodeAt(0);
     const isDigit = char => char.charCodeAt(0) >= zeroCode && char.charCodeAt(0) <= nineCode;

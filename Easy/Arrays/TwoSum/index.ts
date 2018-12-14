@@ -1,10 +1,7 @@
 /**
  * Time Complexity: O(n)
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
  */
-export default function twoSum(nums, target){
+export default function twoSum(nums: number[], target: number): number[]{
     let result = [];
     if(!nums || !nums.length) return result;
 
