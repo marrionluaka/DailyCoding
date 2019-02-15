@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { sandbox } from "sinon";
 import BurgerBuilder from "./";
 
-describe.only("Builder Spec", function () {
+describe("Builder Spec", function () {
     let sut: BurgerBuilder, _sandbox: any;
 
     beforeEach(() => {
@@ -17,20 +17,31 @@ describe.only("Builder Spec", function () {
     });
 
     it("creates a burger with loin cut and no pickles",function () {
-        // Act
+        // Arrange
         const expected = "Beef type: Loin";
-        const actual = sut.Build();
+        
+        // Act
+        sut.Build();
 
-        // Assert
-        expect(actual).to.eql(expected);
+        // Assert 
+        //@ts-ignore~
+        expect(console.log.getCall(0).args.join().replace(",", ""))
+            .to.equal("Beef type: Loin");
+        //@ts-ignore~
+        expect(console.log.getCall(1).args.join().replace(",", ""))
+            .to.equal("Do I have pickles no");
     });
 
     it("creates a burger with brisket cut and pickles",function () {
         // Act
-        const expected = "Beef type: Brisket";
-        const actual = sut.WithBrisket().WithPickles().Build();
+        sut.WithBrisket().WithPickles().Build();
 
         // Assert
-        expect(actual).to.eql(expected);
+        //@ts-ignore~
+        expect(console.log.getCall(0).args.join().replace(",", ""))
+            .to.equal("Beef type: Brisket");
+        //@ts-ignore~
+        expect(console.log.getCall(1).args.join().replace(",", ""))
+            .to.equal("Do I have pickles yes");
     });
 });
