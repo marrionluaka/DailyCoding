@@ -1,12 +1,12 @@
-# LeetCode Challenges
+# Daily Coding
 
-All LeetCode top data structures & algorithms questions with answers, explanations and unit tests
+To force myself to code everyday...
 
 ## Usage
 
 Clone repo:
     ```
-    git clone https://github.com/marrionluaka/LeetCode_Challenges.git
+    git clone https://github.com/marrionluaka/DailyCoding.git
     ```
 
 Run:
