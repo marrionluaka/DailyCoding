@@ -17,9 +17,6 @@ describe("Builder Spec", function () {
     });
 
     it("creates a burger with loin cut and no pickles",function () {
-        // Arrange
-        const expected = "Beef type: Loin";
-        
         // Act
         sut.Build();
 
