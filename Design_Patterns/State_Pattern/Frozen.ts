@@ -16,7 +16,6 @@ export class Frozen implements IAccountState {
     }
 
     public Withdraw(subtractFromBalance: Action): IAccountState {
-        console.log("chulo")
         this._onUnfreeze();
         subtractFromBalance();
         return new Active(this._onUnfreeze);
