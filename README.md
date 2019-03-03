@@ -1,6 +1,6 @@
 # Daily Coding
 
-To force myself to code everyday...
+To encourage myself to code everyday...
 
 ## Usage
 
