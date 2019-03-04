@@ -9,7 +9,7 @@ export class LinkedList<T> {
     }
 
     public Append(value: any): LinkedList<T> {
-    	let node = new Node(value), current;
+    	let node = new Node(value);
       
         if(!this._head){
             this._head = node;
