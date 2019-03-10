@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import Queue from './';
 
-describe.only("Queue Spec", () => {
+describe("Queue Spec", () => {
     let sut: Queue<string>;
     beforeEach(() => sut = new Queue());
 
