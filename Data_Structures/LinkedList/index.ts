@@ -84,19 +84,19 @@ export class LinkedList<T> {
         return -1;
     }
 
-    public Remove(value){
+    public Remove(value): number{
         return this.RemoveAt(this.IndexOf(value));
     }
     
-    public IsEmpty(){
+    public IsEmpty(): boolean {
     	return this._length === 0;
     }
     
-    public Count(){
+    public Count(): number {
     	return this._length;
     }
     
-    public GetHead(){
+    public GetHead(): Node<T> {
     	return this._head;
     }
 
