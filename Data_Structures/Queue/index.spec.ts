@@ -1,5 +1,6 @@
 import { expect } from 'chai';
-import Queue from './';
+import Queue, { BFS } from './';
+import { Link } from '../Helpers/Node';
 
 describe("Queue Spec", () => {
     let sut: Queue<string>;
@@ -23,5 +24,16 @@ describe("Queue Spec", () => {
         sut.Clear();
         expect(sut.Count).to.equal(0);
         expect(sut.Front).to.be.null;
+    });
+
+    it("returns all the neighbours of a given root element", () => {
+        const root = new Link(5);
+        root.left  = new Link(3);
+        root.right = new Link(7);
+
+        const expected = [5,3,7];
+        const actual = BFS(root);
+
+        expect(actual).to.eql(expected);
     });
 });
