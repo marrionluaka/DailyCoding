@@ -17,7 +17,7 @@ describe("Queue Spec", () => {
         expect(sut.Count).to.equal(0);
     });
 
-    it("Clear(): ", () => {
+    it("Clear(): clears out the queue", () => {
         sut.Enqueue("hello");
 
         sut.Clear();
