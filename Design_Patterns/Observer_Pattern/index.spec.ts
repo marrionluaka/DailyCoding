@@ -17,18 +17,16 @@ describe("Observer Spec", () => {
 
     it("unsubscribe(): removes an observer from the list of observers", () => {
         observer.id = 1;
-        sut.subscribe(observer);
-
-        sut.unsubscribe(observer);
+        
+        sut.subscribe(observer).unsubscribe(observer);
         
         expect(sut.observers).to.be.empty;
     });
 
     it("notifyObserver(): notifies a given observer", () => {
         const spy = sinon.spy(observer, "notify");
-        sut.subscribe(observer);
-
-        sut.notifyObserver(observer);
+        
+        sut.subscribe(observer).notifyObserver(observer);
 
         expect(spy.called).to.be.true;
     });
@@ -37,10 +35,11 @@ describe("Observer Spec", () => {
         const newObserver = new Observer();
         const observer1 = sinon.spy(observer, "notify");
         const observer2 = sinon.spy(newObserver, "notify");
-        sut.subscribe(observer);
-        sut.subscribe(newObserver);
-
-        sut.notifyAllObservers();
+        
+        sut
+            .subscribe(observer)
+            .subscribe(newObserver)
+            .notifyAllObservers();
         
         expect(observer1.called).to.be.true;
         expect(observer2.called).to.be.true;
