@@ -16,12 +16,8 @@ describe("Tree Traversal Spec", () => {
     });
 
     it("BST(): returns all the neighbours of a given root element", () => {
-        const root = new Link(5);
-        root.left  = new Link(3);
-        root.right = new Link(7);
-
-        const expected = [5,3,7];
-        const actual = BFS(root);
+        const expected = [10, 5, 15, 3, 7, 20];
+        const actual = BFS(tree);
 
         expect(actual).to.eql(expected);
     });
