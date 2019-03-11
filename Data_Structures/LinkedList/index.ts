@@ -1,4 +1,4 @@
-import Node from "../Helpers/Node";
+import Node from "../../Helpers/Node";
 
 export class LinkedList<T> {
     private _head: Node<T>;

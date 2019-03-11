@@ -1,4 +1,4 @@
-import Node from '../Helpers/Node';
+import Node from '../../Helpers/Node';
 
 export default class Stack<T> {
     private _first: Node<T>

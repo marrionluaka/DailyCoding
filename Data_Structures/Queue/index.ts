@@ -1,4 +1,4 @@
-import Node, { Link } from '../Helpers/Node';
+import Node, { Link } from '../../Helpers/Node';
 
 export default class Queue<T> {
     private _first: Node<T>;
@@ -52,23 +52,4 @@ export default class Queue<T> {
         this._last = null;
         this._size = 0;
     }
-}
-
-
-export function BFS<T>(root: Link<T>): Array<T>{
-    let node = root, 
-        visited = [], 
-        queue = new Queue<Link<T>>();
-
-    queue.Enqueue(root);
-
-    while(!queue.IsEmpty) {
-        node = queue.Dequeue();
-        visited.push(node.value);
-
-        if(node.left) queue.Enqueue(node.left);
-        if(node.right) queue.Enqueue(node.right);
-    }
-
-    return visited;
 }
