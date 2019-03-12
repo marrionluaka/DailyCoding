@@ -25,10 +25,15 @@ export default class MaxBinaryHeap<T> {
 
             if(newVal <= parent) break;
 
-            this._values[parentIdx] = newVal;
-            this._values[idx] = parent;
+            this._swap(this._values, parentIdx, idx);
 
             idx = parentIdx;
         }
+    }
+
+    private _swap<T>(array: Array<T>, i: number, j: number): void{
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
