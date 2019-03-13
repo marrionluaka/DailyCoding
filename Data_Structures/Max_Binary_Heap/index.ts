@@ -15,6 +15,18 @@ export default class MaxBinaryHeap<T> {
         return this;
     }
 
+    public extractMax(){
+        const maxValue = this._values[0],
+              newRoot = this._values.pop();
+        
+        if(this._values.length){
+            this._values[0] = newRoot;
+            this._sinkDown(newRoot);
+        }
+
+        return maxValue;
+    }
+
     private _bubbleUp(): void {
         let idx = this._values.length-1;
         const newVal = this._values[idx];
@@ -28,6 +40,40 @@ export default class MaxBinaryHeap<T> {
             this._swap(this._values, parentIdx, idx);
 
             idx = parentIdx;
+        }
+    }
+
+    private _sinkDown(root: T): void {
+        const length = this._values.length;
+        let idx: number = 0;
+
+        while(true){
+            let leftChildIdx = 2*idx + 1,
+                rightChildIdx = 2*idx + 2,
+                leftChild: T,
+                rightChild: T,
+                swap: number;
+
+            if(leftChildIdx < length){
+                leftChild = this._values[leftChildIdx];
+                if(leftChild > root) swap = leftChildIdx;
+            }
+
+            if(rightChildIdx < length){
+                rightChild = this._values[rightChildIdx];
+                if(
+                    (swap === null && rightChild > root) ||
+                    (swap !== null && rightChild > leftChild)
+                ){
+                    swap = rightChildIdx;
+                }
+            }
+
+            if(!swap) break;
+
+            this._swap(this._values, idx, swap);
+
+            idx = swap;
         }
     }
 
