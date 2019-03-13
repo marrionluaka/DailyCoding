@@ -37,10 +37,9 @@ describe("Max Binary Heap Spec", () => {
          */
         sut.insert(99);
 
-        const expected = 100;
-        const actual = sut.extractMax();
+        const maxValue = sut.extractMax();
 
-        expect(actual).to.equal(expected);
+        expect(maxValue).to.equal(100);
         expect(sut.Values).to.eql([99, 19, 36, 17, 12, 25, 5]);
     });
 });
