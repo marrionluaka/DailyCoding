@@ -3,8 +3,7 @@
  */
 export default function rotate(nums: number[], k: number): void {
     if(!nums || !nums.length) return;
-
-	nums.unshift(...nums.splice(nums.length - k));
+    nums.unshift(...nums.splice(nums.length - k));
 };
 
 /**
