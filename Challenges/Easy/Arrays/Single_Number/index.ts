@@ -1,5 +1,5 @@
 /**
- * Time Complexity: O(1)
+ * Time Complexity: O(n)
  */
 export default function singleNumber(nums: number[]): number {
     const frequency = nums.reduce((visited, val) => {
@@ -11,16 +11,20 @@ export default function singleNumber(nums: number[]): number {
 		return visited;
     }, {});
 	
-	return +Object.keys(frequency).find(k => frequency[k] > 0);
+	return +Object.keys(frequency).find(k => frequency[k] > 0) || 0;
 };
 
 /**
  * Explanation:
- * 1. Get the length of the given array
+ * 1. Loop through nums arr
  * 
- * 2. Substract nums.length with k
+ * 2. Create visited hash
  * 
- * 3. Splice from the difference of nums.length and k
+ * 3. If a value has already been added to the hash, decrement its value
  * 
- * 4. Place the spliced array at the beginning of nums
+ * 4. Else set the current val to 1
+ * 
+ * 5. Once out of the loop, find the value that is greater than zero
+ * 
+ * 6. If there is none return 0
  */
