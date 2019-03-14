@@ -7,11 +7,11 @@ export default function singleNumber(nums: number[]): number {
             visited[val] = visited[val] -= 1;
         else
             visited[val] = 1;
-		
-		return visited;
+
+        return visited;
     }, {});
-	
-	return +Object.keys(frequency).find(k => frequency[k] > 0) || 0;
+
+    return +Object.keys(frequency).find(k => frequency[k] > 0) || 0;
 };
 
 /**
