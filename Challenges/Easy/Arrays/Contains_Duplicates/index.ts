@@ -24,5 +24,5 @@ export default function containsDuplicate(nums: number[]): boolean {
  * 
  * 5. Else add the el to the set.
  * 
- * 6. If you've looped throughn the entire array, then no duplicates were found, return false.
+ * 6. If you've looped through the entire array, then no duplicates were found, return false.
  */
