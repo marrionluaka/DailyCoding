@@ -33,9 +33,9 @@ export class LinkedList<T> {
             node.next = current;
             this._head = node;
         } else {
-            const item = this._FindItem(index, position, this._head);
-            node.next = item.current;
-            item.prev.next = node;
+            const [prev, next] = this._FindItem(index, position);
+            node.next = next;
+            prev.next = node;
         }
         
         this._length++;
@@ -45,19 +45,21 @@ export class LinkedList<T> {
     public RemoveAt(position: number) {
         if(position < 1 || position > this._length) return null;
         
-        let current = this._head,
-            item,
-            index = 1;
+        let current: Node<T> = this._head,
+            item: T,
+            index: number = 1;
         
         if(position === 1){
+            item = this._head.value;
             this._head = current.next;
         } else {
-            item = this._FindItem(index, position, this._head);
-            item.prev.next = item.current.next
+            const [prev, next] = this._FindItem(index, position);
+            prev.next = next.next
+            item = next.value;
         }
         
         this._length--;
-        return item.current.value;
+        return item;
     }
     
     public ToString(): string{
@@ -84,7 +86,7 @@ export class LinkedList<T> {
         return -1;
     }
 
-    public Remove(value): number{
+    public Remove(value): T{
         return this.RemoveAt(this.IndexOf(value));
     }
     
@@ -114,17 +116,14 @@ export class LinkedList<T> {
         return last;
     }
     
-    private _FindItem(index: number, position: number, head: Node<T>){
-        let prev, current = head;
+    private _FindItem(index: number, position: number){
+        let prev, current = this._head;
 
         while(index++ < position){
             prev = current;
             current = current.next;
         }
-
-        return {
-            prev,
-            current
-        };
+        
+        return [prev, current];
     }
 }
