@@ -14,7 +14,7 @@ export class LinkedList<T> {
         if(!this._head){
             this._head = node;
         } else {
-            this._head = this._GetLastNode(this._head);
+            this._head = this._GetLastNode();
             this._head.next = node;
         }
       
@@ -107,8 +107,8 @@ export class LinkedList<T> {
         this._length = 0;
     }
 
-    private _GetLastNode(node: Node<T>): Node<T>{
-        let last = Object.assign({}, node);
+    private _GetLastNode(): Node<T>{
+        let last = Object.assign({}, this._head);
         
         while(last.next){
             last = last.next;
