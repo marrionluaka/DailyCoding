@@ -3,7 +3,7 @@ import Node from "@Helpers/Node";
 
 export default function LinkedListReversal<T>(list: LinkedList<T>): LinkedList<T> {
     let prev: Node<T>, 
-        current = list.GetHead(), 
+        current = list.GetHead, 
         next: Node<T>;
 
     while(current){

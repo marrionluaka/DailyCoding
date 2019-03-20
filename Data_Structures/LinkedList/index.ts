@@ -56,8 +56,12 @@ export class LinkedList<T> {
         this._length++;
         return true
     }
+
+    public RemoveLast(): T {
+        return this.RemoveAt(this._length);
+    }
     
-    public RemoveAt(position: number) {
+    public RemoveAt(position: number): T {
         if(position < 1 || position > this._length) return null;
         
         let current: Node<T> = this._head,
@@ -100,21 +104,21 @@ export class LinkedList<T> {
         }
         return -1;
     }
-
-    public Remove(value): T {
-        return this.RemoveAt(this.IndexOf(value));
-    }
     
-    public IsEmpty(): boolean {
+    public get IsEmpty(): boolean {
     	return this._length === 0;
     }
     
-    public Count(): number {
+    public get Count(): number {
     	return this._length;
     }
     
-    public GetHead(): Node<T> {
+    public get GetHead(): Node<T> {
     	return this._head;
+    }
+
+    public get GetTail(): Node<T> {
+        return this._tail;
     }
 
     public Clear(): void {

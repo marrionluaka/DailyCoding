@@ -1,16 +1,17 @@
 import Node from '../../Helpers/Node';
+import { LinkedList } from '@DataStructures/LinkedList';
 
 export default class Stack<T> {
-    private _first: Node<T>
-    private _last: Node<T>
-    private _size: number
+    private _list: LinkedList<T>;
+    private _size: number;
 
     constructor(){
+        this._list = new LinkedList();
         this._size = 0;
     }
 
     get Peek(): Node<T>{
-        return this._last;
+        return this._list.GetTail;
     }
    
     get Count(): number{
@@ -22,36 +23,18 @@ export default class Stack<T> {
     }
 
     Push(val: T): Stack<T>{
-        const newNode = new Node(val);
-        
-        if(!this._first){
-            this._first = newNode;
-            this._last = newNode;
-        } else {
-            let temp = this._first;
-            this._first = newNode;
-            this._first.next = temp;
-        }
         ++this._size;
+        this._list.Append(val);
         return this;
     }
    
-    Pop(): T{
-        if(!this._first) return null;
-        
-        let temp = this._first;
-        
-        if(this._first === this._last) this._last = null;
-        
-        this._first = this._first.next;
+    Pop(): T {
         this._size--;
-        
-        return temp.value;
+        return this._list.RemoveLast();
     }
    
     Clear(): Stack<T>{
-        this._first = null;
-        this._last = null;
+        this._list = new LinkedList();
         this._size = 0;
         return this;
     }

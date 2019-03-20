@@ -22,17 +22,17 @@ describe('LinkedList Spec', () => {
         const actual = LinkedList.ToLinkedList(node);
         
         // Assert
-        expect(actual.GetHead().value).to.equal(1);
+        expect(actual.GetHead.value).to.equal(1);
       });
       
       it('adds a new item', () => {
         // Act
         const expected = 1;
-        const actual = sut.Append(value).Count();
+        const actual = sut.Append(value).Count;
         
         // Assert
         expect(actual).to.equal(expected);
-        expect(sut.GetHead().value).to.equal(value);
+        expect(sut.GetHead.value).to.equal(value);
       });
       
       it('adds a new item to list when list is not empty', () => {
@@ -41,7 +41,7 @@ describe('LinkedList Spec', () => {
         sut.Append(value).Append("World");
   
         // Assert
-        expect(sut.GetHead().next.value).to.equal(expected);
+        expect(sut.GetHead.next.value).to.equal(expected);
       });
       
       it('returns null when the position is less than 1', () => {
@@ -69,7 +69,7 @@ describe('LinkedList Spec', () => {
         
         // Assert
         expect(actual).to.eql(expected);
-        expect(sut.GetHead().value).to.equal(value)
+        expect(sut.GetHead.value).to.equal(value)
       });
       
       it('returns null when the position is invalid', () => {
@@ -93,7 +93,7 @@ describe('LinkedList Spec', () => {
         sut.Append(value).Insert(1, "Good-Bye");
         
         // Assert
-        expect(sut.GetHead().value).to.equal("Good-Bye");
+        expect(sut.GetHead.value).to.equal("Good-Bye");
       });
       
       it('inserts an element at a specified position', () => {
@@ -102,8 +102,8 @@ describe('LinkedList Spec', () => {
         
         // Assert
         expect(actual).to.equal(true);
-        expect(sut.Count()).to.equal(3);
-        expect(sut.GetHead().next.value).to.equal("Good-Bye");
+        expect(sut.Count).to.equal(3);
+        expect(sut.GetHead.next.value).to.equal("Good-Bye");
       });
       
       it('returns the index of the element in the list', () => {
@@ -142,10 +142,10 @@ describe('LinkedList Spec', () => {
         expect(actual).to.eql(expected);
       });
       
-      it('removes an element from the list based on its value', () => {
+      it('removes the last element from the list', () => {
         // Act
         const expected = "World";
-        const actual = sut.Append(value).Append("World").Remove("World");
+        const actual = sut.Append(value).Append("World").RemoveLast();
         
         // Assert
         expect(actual).to.eql(expected);
@@ -153,7 +153,7 @@ describe('LinkedList Spec', () => {
       
       it('returns true when the list is empty', () => {
         // Act
-        const actual = sut.IsEmpty();
+        const actual = sut.IsEmpty;
         
         // Assert
         expect(actual).to.equal(true);
@@ -161,7 +161,7 @@ describe('LinkedList Spec', () => {
       
       it('returns the first element in the list', () => {
         // Act
-        const actual = sut.Append(value).GetHead();
+        const actual = sut.Append(value).GetHead;
         
         // Assert
         expect(actual.value).to.equal(value);
