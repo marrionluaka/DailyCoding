@@ -14,10 +14,7 @@ describe('LinkedList From Tail Spec', () => {
     });
 
     it("returns the 3rd node from the tail.", () => {
-        // Act
-        const actual = LinkedListFromTail(list, 2);
-
         // Assert
-        expect(actual.value).to.equal(2);
+        expect(LinkedListFromTail(list, 2).value).to.equal(2);
     });
 });
