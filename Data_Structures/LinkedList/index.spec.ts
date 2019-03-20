@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { LinkedList } from '.';
+import Node from '@Helpers/Node';
 
 describe('LinkedList Spec', () => {
 	
@@ -11,6 +12,18 @@ describe('LinkedList Spec', () => {
             sut = new LinkedList();
             sut.Clear();
         });
+
+      it("converts a node to a linkedlist", () => {
+        // Arrange
+        const node = new Node(1);
+        node.next = new Node(2);
+
+        // Act
+        const actual = LinkedList.ToLinkedList(node);
+        
+        // Assert
+        expect(actual.GetHead().value).to.equal(1);
+      });
       
       it('adds a new item', () => {
         // Act

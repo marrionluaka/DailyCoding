@@ -3,7 +3,7 @@
   "version": "1.0.9",
   "description": "Data Structure & Algorithms training with LeetCode.",
   "scripts": {
-    "test": "mocha --reporter progress --compilers ts:ts-node/register --watch ./**/**/**/*.spec.ts ./**/**/*.spec.ts"
+    "test": "mocha --reporter progress -r tsconfig-paths/register --compilers ts:ts-node/register --watch ./**/**/**/*.spec.ts ./**/**/*.spec.ts"
   },
   "keywords": [
     "leetcode",
@@ -23,6 +23,7 @@
     "@types/node": "10.12.15",
     "@types/sinon": "^7.0.6",
     "ts-node": "7.0.1",
+    "tsconfig-paths": "3.8.0",
     "typescript": "3.2.2"
   }
 }

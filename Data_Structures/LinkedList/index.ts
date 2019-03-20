@@ -2,10 +2,24 @@ import Node from "../../Helpers/Node";
 
 export class LinkedList<T> {
     private _head: Node<T>;
+    private _tail: Node<T>;
     private _length: number;
 
     constructor(){
+        this._head = null;
+        this._tail = null;
         this._length = 0;
+    }
+
+    public static ToLinkedList<T>(node: Node<T>): LinkedList<T> {
+        const list: LinkedList<T> = new LinkedList();
+
+        while(node){
+            list.Append(node.value);
+            node = node.next;
+        }
+
+        return list;
     }
 
     public Append(value: any): LinkedList<T> {
@@ -13,9 +27,10 @@ export class LinkedList<T> {
       
         if(!this._head){
             this._head = node;
+            this._tail = this._head;
         } else {
-            this._head = this._GetLastNode();
-            this._head.next = node;
+            this._tail.next = node;
+            this._tail = node;
         }
       
         this._length++;
@@ -62,7 +77,7 @@ export class LinkedList<T> {
         return item;
     }
     
-    public ToString(): string{
+    public ToString(): string {
         let current = this._head,
             res = '';
         
@@ -73,7 +88,7 @@ export class LinkedList<T> {
         return res;
     }
     
-    public IndexOf(value): number{
+    public IndexOf(value): number {
         let current = this._head,
             index = 1;
             
@@ -86,7 +101,7 @@ export class LinkedList<T> {
         return -1;
     }
 
-    public Remove(value): T{
+    public Remove(value): T {
         return this.RemoveAt(this.IndexOf(value));
     }
     
@@ -106,17 +121,8 @@ export class LinkedList<T> {
         this._head = null;
         this._length = 0;
     }
-
-    private _GetLastNode(): Node<T>{
-        let last = Object.assign({}, this._head);
-        
-        while(last.next){
-            last = last.next;
-        }
-        return last;
-    }
     
-    private _FindItem(index: number, position: number){
+    private _FindItem(index: number, position: number) {
         let prev, current = this._head;
 
         while(index++ < position){

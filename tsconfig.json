@@ -5,7 +5,12 @@
         "outDir": "dist",
         "sourceMap": true,
         "watch": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "@DataStructures/*": ["Data_Structures/*"],
+            "@Helpers/*": ["Helpers/*"]
+        }
     },
     "exclude": [
         "./node_modules"
