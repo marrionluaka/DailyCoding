@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import LinkedListCircular from '.';
 import { LinkedList } from '@DataStructures/LinkedList';
 
-describe.only('LinkedList Circular Spec', () => {
+describe('LinkedList Circular Spec', () => {
     let list: LinkedList<number>;
     
     beforeEach(() => {
@@ -16,7 +16,7 @@ describe.only('LinkedList Circular Spec', () => {
     it("returns true when a linkedlist is circular.", () => {
         // Arrange
         list.GetTail.next = list.GetHead;
-        
+
         // Assert
         expect(LinkedListCircular(list)).to.be.true;
     });
