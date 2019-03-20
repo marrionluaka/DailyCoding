@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import LinkedListReversal from '.';
 import { LinkedList } from '@DataStructures/LinkedList';
 
-describe('LinkedList Spec', () => {
+describe('LinkedList Reversal Spec', () => {
 
     it("reverses a linkedlist", () => {
         // Arrange
