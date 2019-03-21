@@ -1,5 +1,5 @@
+import Queue from "@DataStructures/Queue";
 import { Link } from "../../Helpers/Node";
-import Queue from "../../Data_Structures/Queue";
 
 type TraverseFunc<T> = (visited: Array<any>, node: Link<T>, traverse: any) => any
 
