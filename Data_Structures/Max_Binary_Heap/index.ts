@@ -1,3 +1,5 @@
+import { swap } from'@Helpers/Utils';
+
 export default class MaxBinaryHeap<T> {
     private _values: Array<T>;
     
@@ -37,7 +39,7 @@ export default class MaxBinaryHeap<T> {
 
             if(newVal <= parent) break;
 
-            this._swap(this._values, parentIdx, idx);
+            swap(this._values, parentIdx, idx);
 
             idx = parentIdx;
         }
@@ -52,34 +54,28 @@ export default class MaxBinaryHeap<T> {
                 rightChildIdx = 2*idx + 2,
                 leftChild: T,
                 rightChild: T,
-                swap: number;
+                tobeSwapped: number;
 
             if(leftChildIdx < length){
                 leftChild = this._values[leftChildIdx];
-                if(leftChild > root) swap = leftChildIdx;
+                if(leftChild > root) tobeSwapped = leftChildIdx;
             }
 
             if(rightChildIdx < length){
                 rightChild = this._values[rightChildIdx];
                 if(
-                    (swap === null && rightChild > root) ||
-                    (swap !== null && rightChild > leftChild)
+                    (tobeSwapped === null && rightChild > root) ||
+                    (tobeSwapped !== null && rightChild > leftChild)
                 ){
-                    swap = rightChildIdx;
+                    tobeSwapped = rightChildIdx;
                 }
             }
 
-            if(!swap) break;
+            if(!tobeSwapped) break;
 
-            this._swap(this._values, idx, swap);
+            swap(this._values, idx, tobeSwapped);
 
-            idx = swap;
+            idx = tobeSwapped;
         }
-    }
-
-    private _swap<T>(array: Array<T>, i: number, j: number): void{
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 }
