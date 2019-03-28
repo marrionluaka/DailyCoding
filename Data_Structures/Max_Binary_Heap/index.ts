@@ -17,7 +17,7 @@ export default class MaxBinaryHeap<T> {
         return this;
     }
 
-    public extractMax(){
+    public extractMax(): T {
         const maxValue = this._values[0],
               newRoot = this._values.pop();
         
