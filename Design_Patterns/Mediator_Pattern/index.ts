@@ -1,11 +1,11 @@
-export default class Mediator<T> {
+export default class Mediator {
     private _channels: any;
 
     constructor(){
         this._channels = {};
     }
 
-    public subscribe(channel: string, callback: any): Mediator<T>{
+    public subscribe(channel: string, callback: any): Mediator{
         this._channels[channel] = this._channels[channel] || [];
         this._channels[channel].push(callback);
         return this;

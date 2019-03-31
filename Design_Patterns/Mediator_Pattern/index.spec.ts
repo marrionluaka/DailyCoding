@@ -2,11 +2,11 @@ import { expect } from 'chai';
 import Mediator from '.';
 
 describe("Mediator Spec", () => {
-    let _sut: Mediator<string>, 
+    let _sut: Mediator, 
         _res: string = "";
 
     beforeEach(() => {
-        _sut = new Mediator<string>().subscribe("myevt", () => _res = "call me maybe?");
+        _sut = new Mediator().subscribe("myevt", () => _res = "call me maybe?");
     });
 
     it("unsubscribe(): unsubscribe from an event.", () => {
