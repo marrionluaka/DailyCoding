@@ -21,8 +21,8 @@ export default class Mediator<T> {
     public publish(channel: string): void{
         if(!this._channels[channel]) return;
 
-        Object.keys(this._channels).forEach((ch: any) => {
-            this._channels[ch][0].apply(this, [].slice.call(arguments, 1));
+        this._channels[channel].forEach((fn: any) => {
+            fn.apply(this, [].slice.call(arguments, 1));
         });
     }
 }
