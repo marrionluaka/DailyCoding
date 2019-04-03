@@ -5,20 +5,20 @@ export default class Mediator {
         this._channels = {};
     }
 
-    public subscribe(channel: string, callback: any): Mediator{
+    public subscribe(channel: string, callback: any): Mediator {
         this._channels[channel] = this._channels[channel] || [];
         this._channels[channel].push(callback);
         return this;
     }
 
-    public unsubscribe(channel: string): void{
+    public unsubscribe(channel: string): void {
         if(!this._channels[channel]) return;
 
         const {[channel]: remove, ...res } = this._channels;
         this._channels = res;
     }
 
-    public publish(channel: string): void{
+    public publish(channel: string): void {
         if(!this._channels[channel]) return;
 
         this._channels[channel].forEach((fn: any) => {
