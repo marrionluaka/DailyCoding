@@ -111,13 +111,16 @@ describe('Set Spec', () => {
 
         it('difference():', () => {
             // Arrange
-            
+            sut.add('2');
+            sut.add('3');
+            sut.add('4');
 
             // Act
-            sut.difference(otherSet);
+            const expected = ['4'];
+            const actual = sut.difference(otherSet).values();
 
             // Assert
-            
+            expect(actual).to.eql(expected);
         });
 
         it('subset():', () => {

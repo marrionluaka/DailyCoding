@@ -37,14 +37,18 @@ export class Set<T> {
 
     public intersect(setB: Set<T>){
         return this.values().reduce((intersection, val) =>{
-            if(setB.has(val))
-                intersection.add(val);
+            if(setB.has(val)) intersection.add(val);
             return intersection;
         }, new Set());
     }
 
-    public difference(set: Set<T>){
-        throw '';
+    public difference(setB: Set<T>){
+        return this
+            .values()
+            .reduce((diff, val) => {
+                if(!setB.has(val)) diff.add(val);
+                return diff;
+            }, new Set());
     }
 
     public subset(set: Set<T>){
