@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Set } from '.';
 
 
-describe.only('Set Spec', () => {
+describe('Set Spec', () => {
     let sut: Set<string>;
     const item = 'item';
 
