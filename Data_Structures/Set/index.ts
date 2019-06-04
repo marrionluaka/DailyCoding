@@ -6,6 +6,12 @@ export class Set<T> {
         this._items = {}
     }
 
+    public get values(): T[] {
+        return Object
+            .keys(this._items)
+            .reduce((values, val) =>  [...values, val], []);
+    }
+
     public add(item: T): boolean {
         if(this.has(item)) return false;
 
@@ -20,35 +26,21 @@ export class Set<T> {
         return true;
     }
 
-    public values(): T[] {
-        return Object
-            .keys(this._items)
-            .reduce((values, val) =>  [...values, val], []);
-    }
-
     public union(setB: Set<T>){
         const unionSet = new Set();
         const fn = (v: T) => unionSet.add(v);
 
-        this.values().forEach(fn);
-        setB.values().forEach(fn);
+        this.values.forEach(fn);
+        setB.values.forEach(fn);
         return unionSet;
     }
 
     public intersect(setB: Set<T>){
-        return this.values().reduce((intersection, val) =>{
-            if(setB.has(val)) intersection.add(val);
-            return intersection;
-        }, new Set());
+        return this._operate(val => setB.has(val));
     }
 
-    public difference(setB: Set<T>){
-        return this
-            .values()
-            .reduce((diff, val) => {
-                if(!setB.has(val)) diff.add(val);
-                return diff;
-            }, new Set());
+    public difference(setB: Set<T>): Set<T>{
+        return this._operate(val => !setB.has(val));
     }
 
     public subset(set: Set<T>){
@@ -65,5 +57,14 @@ export class Set<T> {
 
     public clear(): void {
         this._items = {}
+    }
+
+    private _operate(predicate: (set: T) => Boolean): Set<T> {
+        return this
+            .values
+            .reduce((acc, val) => {
+                if(predicate(val)) acc.add(val);
+                return acc;
+            }, new Set<T>());
     }
 }

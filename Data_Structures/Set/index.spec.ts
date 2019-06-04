@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Set } from '.';
 
 
-describe('Set Spec', () => {
+describe.only('Set Spec', () => {
     let sut: Set<string>;
     const item = 'item';
 
@@ -61,13 +61,13 @@ describe('Set Spec', () => {
         expect(sut.size()).to.equal(1);
     });
 
-    it('values():', () => {
+    it('values getter:', () => {
         // Arrange
         sut.add(item);
         sut.add('item2');
 
         // Assert
-        expect(sut.values()).to.eql(['item', 'item2']);
+        expect(sut.values).to.eql(['item', 'item2']);
     });
 
     context('Set operations', () => {
@@ -89,7 +89,7 @@ describe('Set Spec', () => {
 
             // Act
             const expected = ['1', '2', '3', '4', '5'];
-            const actual = sut.union(otherSet).values();
+            const actual = sut.union(otherSet).values;
 
             // Assert
             expect(actual).to.eql(expected);
@@ -103,7 +103,7 @@ describe('Set Spec', () => {
 
             // Act
             const expected = ['2', '3'];
-            const actual = sut.intersect(otherSet).values();
+            const actual = sut.intersect(otherSet).values;
 
             // Assert
             expect(actual).to.eql(expected);
@@ -117,7 +117,7 @@ describe('Set Spec', () => {
 
             // Act
             const expected = ['4'];
-            const actual = sut.difference(otherSet).values();
+            const actual = sut.difference(otherSet).values;
 
             // Assert
             expect(actual).to.eql(expected);
