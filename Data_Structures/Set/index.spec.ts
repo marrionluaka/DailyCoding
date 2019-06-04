@@ -15,19 +15,19 @@ describe.only('Set Spec', () => {
         sut.add(item);
 
         // Assert
-        expect(sut.size()).to.equal(1);
+        expect(sut.size).to.equal(1);
     });
 
     it('delete():', () => {
         // Arrange
         sut.add(item);
-        expect(sut.size()).to.equal(1);
+        expect(sut.size).to.equal(1);
 
         // Act
         sut.delete(item);
 
         // Assert
-        expect(sut.size()).to.equal(0);
+        expect(sut.size).to.equal(0);
 
     });
 
@@ -50,7 +50,7 @@ describe.only('Set Spec', () => {
         sut.clear();
 
         // Assert
-        expect(sut.size()).to.equal(0);
+        expect(sut.size).to.equal(0);
     });
 
     it('size():', () => {
@@ -58,7 +58,7 @@ describe.only('Set Spec', () => {
         sut.add(item);
 
         // Assert
-        expect(sut.size()).to.equal(1);
+        expect(sut.size).to.equal(1);
     });
 
     it('values getter:', () => {
@@ -123,15 +123,30 @@ describe.only('Set Spec', () => {
             expect(actual).to.eql(expected);
         });
 
-        it('subset():', () => {
-            // Arrange
-            
+        context('subset():', () => {
+            it('returns true when setA is a subset of setB', () => {
+                // Arrange
+                sut.add('1');
+                sut.add('2');
+    
+                // Act
+                const actual = sut.subset(otherSet);
+    
+                // Assert
+                expect(actual).to.be.true;
+            });
 
-            // Act
-            sut.subset(otherSet);
-
-            // Assert
-            
-        });
+            it('returns false when setA is not a subset of setB', () => {
+                // Arrange
+                sut.add('4');
+                sut.add('5');
+    
+                // Act
+                const actual = sut.subset(otherSet);
+    
+                // Assert
+                expect(actual).to.be.false;
+            })
+        })
     });
 });

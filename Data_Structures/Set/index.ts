@@ -12,6 +12,10 @@ export class Set<T> {
             .reduce((values, val) =>  [...values, val], []);
     }
 
+    public get size(): number {
+        return Object.keys(this._items).length
+    }
+
     public add(item: T): boolean {
         if(this.has(item)) return false;
 
@@ -26,7 +30,7 @@ export class Set<T> {
         return true;
     }
 
-    public union(setB: Set<T>){
+    public union(setB: Set<T>) {
         const unionSet = new Set();
         const fn = (v: T) => unionSet.add(v);
 
@@ -35,31 +39,27 @@ export class Set<T> {
         return unionSet;
     }
 
-    public intersect(setB: Set<T>){
+    public intersect(setB: Set<T>) {
         return this._operate(val => setB.has(val));
     }
 
-    public difference(setB: Set<T>): Set<T>{
+    public difference(setB: Set<T>): Set<T> {
         return this._operate(val => !setB.has(val));
     }
 
-    public subset(set: Set<T>){
-        throw '';
+    public subset(setB: Set<T>): boolean {
+        return this.size > setB.size ? false : this.values.every(s => setB.has(s));
     }
 
     public has(item: T): boolean {
         return this._items.hasOwnProperty(item);
     }
 
-    public size(): number {
-        return Object.keys(this._items).length
-    }
-
     public clear(): void {
         this._items = {}
     }
 
-    private _operate(predicate: (set: T) => Boolean): Set<T> {
+    private _operate(predicate: (set: T) => boolean): Set<T> {
         return this
             .values
             .reduce((acc, val) => {
