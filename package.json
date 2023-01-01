@@ -23,7 +23,7 @@
     "@types/node": "10.12.15",
     "@types/sinon": "^7.0.6",
     "ts-node": "7.0.1",
-    "tsconfig-paths": "3.8.0",
+    "tsconfig-paths": "3.10.1",
     "typescript": "3.2.2"
   }
 }
